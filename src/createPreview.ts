@@ -1,5 +1,5 @@
 export default function createPreview(issueType: string, values: any) {
-  if (issueType === 'bug') {
+  if (issueType === "bug") {
     return createBugPreview(values);
   }
   return createFeaturePreview(values);
@@ -7,20 +7,13 @@ export default function createPreview(issueType: string, values: any) {
 
 function createBugPreview({
   version,
-  react,
-  system,
-  browser,
-  reproduction,
+  mysql,
   steps,
   expected,
   actual,
-  extra,
-  repo,
+  extra
 }: any) {
   return `
-### Reproduction link
-${createReproductionLink(reproduction)}
-
 ### Steps to reproduce
 ${steps}
 
@@ -32,12 +25,10 @@ ${actual}
 
 | Environment | Info |
 |---|---|
-| antd | ${version} |
-| React | ${react} |
-| System | ${system} |
-| Browser | ${browser} |
+| TiDB Version | ${version} |
+| MySQL Version | ${mysql} |
 
-${extra ? `---\n${extra}` : ''}
+${extra ? `---\n${extra}` : ""}
 `.trim();
 }
 
@@ -49,16 +40,4 @@ ${motivation}
 ### What does the proposed API look like?
 ${proposal}
 `.trim();
-}
-
-function createReproductionLink(link: string) {
-  if (!link) {
-    return;
-  }
-
-  if (link.indexOf('codesandbox.io') >= 0) {
-    return `[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](${link})`;
-  }
-
-  return `[${link}](${link})`;
 }

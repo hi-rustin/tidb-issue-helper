@@ -2,6 +2,7 @@ import * as React from "react";
 import { Form, Row, Col, Input, Select } from "antd";
 import { FormattedMessage } from "react-intl";
 import I18n from "./I18n";
+import mysqlVersion from "./data/mysql.json";
 
 const FormItem = Form.Item;
 const { Option } = Select;
@@ -17,7 +18,7 @@ const BugForm: React.FC<Props> = ({ versions }) => (
     <Form.Item>
       <Row>
         <Col span={11}>
-          {/* antd version */}
+          {/* TiDB version */}
           <FormItem
             name="version"
             label={
@@ -40,90 +41,33 @@ const BugForm: React.FC<Props> = ({ versions }) => (
           </FormItem>
         </Col>
         <Col span={12} offset={1}>
-          {/* react version */}
+          {/* MySQL version */}
           <FormItem
-            name="react"
-            rules={[{ required: true }]}
-            label={<FormattedMessage id="issue.react" defaultMessage="React" />}
+            name="mysql"
+            label={
+              <FormattedMessage
+                id="issue.mysql"
+                defaultMessage="MySQL Version"
+              />
+            }
             help={
               <FormattedMessage
-                id="issue.reactHelp"
-                defaultMessage="react/react-native version..."
+                id="issue.mysqlHelp"
+                defaultMessage="MySQL version..."
               />
             }
           >
-            <Input />
+            <Select showSearch={true}>
+              {mysqlVersion.map(m => (
+                <Option key={m.version} value={m.version}>
+                  {m.version}
+                </Option>
+              ))}
+            </Select>
           </FormItem>
         </Col>
       </Row>
     </Form.Item>
-
-    <Form.Item>
-      <Row>
-        {/* System */}
-        <Col span={11}>
-          <FormItem
-            name="system"
-            rules={[{ required: true }]}
-            label={
-              <FormattedMessage id="issue.system" defaultMessage="System" />
-            }
-            help={
-              <FormattedMessage
-                id="issue.systemHelp"
-                defaultMessage="System version..."
-              />
-            }
-          >
-            <Input />
-          </FormItem>
-        </Col>
-
-        {/* Browser */}
-        <Col span={12} offset={1}>
-          <FormItem
-            name="browser"
-            rules={[{ required: true }]}
-            label={
-              <FormattedMessage id="issue.browser" defaultMessage="Browser" />
-            }
-            help={
-              <FormattedMessage
-                id="issue.browserHelp"
-                defaultMessage="Browser version..."
-              />
-            }
-          >
-            <Input />
-          </FormItem>
-        </Col>
-      </Row>
-    </Form.Item>
-
-    {/* ==================================== Reproduce ==================================== */}
-    <FormItem
-      name="reproduction"
-      rules={[
-        {
-          required: true,
-          validator: async (rule, value) => {
-            if (value.includes("new-issue.ant.design")) {
-              return Promise.reject("Please provide valid reproduction url");
-            }
-            return Promise.resolve();
-          }
-        }
-      ]}
-      label={
-        <FormattedMessage
-          id="issue.reproduction"
-          defaultMessage="Link to minimal reproduction"
-        />
-      }
-      extra={<I18n id="reproHelp" />}
-    >
-      <Input type="url" />
-    </FormItem>
 
     <FormItem
       name="steps"

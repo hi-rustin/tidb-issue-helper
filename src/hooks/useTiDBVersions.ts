@@ -1,11 +1,11 @@
 import * as api from "../api";
 import { state } from "reactive.macro";
 
-export default function useVersions() {
+export default function useTiDBVersions() {
   let repoVersions: { [repo: string]: string[] } = state({});
 
-  const fetchVersions = (repo: string) => {
-    api.fetchVersions(repo).then(
+  const fetchTiDBVersions = (repo: string) => {
+    api.fetchTiDBVersions(repo).then(
       (versions: string[]) =>
         (repoVersions = {
           ...repoVersions,
@@ -14,5 +14,5 @@ export default function useVersions() {
     );
   };
 
-  return { repoVersions, fetchVersions };
+  return { repoVersions, fetchTiDBVersions };
 }

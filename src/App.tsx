@@ -23,9 +23,9 @@ const App: React.FC = () => {
             <div className={styles.logo}>
               <img
                 alt="logo"
-                src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+                src="https://raw.githubusercontent.com/pingcap/logo/452f46cb1f4ddf1bf26db3be02704e551d702bae/logo.svg"
               />
-              <h1>Issue Helper</h1>
+              <h1>TiDB Issue Helper</h1>
             </div>
             <div className={styles.locale}>
               <Button
@@ -46,14 +46,14 @@ const App: React.FC = () => {
         <Footer style={{ textAlign: "center" }}>
           Inspired by{" "}
           <a
-            href="https://new-issue.vuejs.org/"
+            href="https://new-issue.ant.design/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Vue Issue Helper
+            antd Issue Helper
           </a>{" "}
           ·{" "}
-          <a href="https://github.com/ant-design/antd-issue-helper">
+          <a href="https://github.com/hi-rustin/tidb-issue-helper">
             Source Code
           </a>
         </Footer>

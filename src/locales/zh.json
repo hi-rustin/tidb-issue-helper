@@ -1,8 +1,8 @@
 {
   "intro.modal": "为什么要有这么严格的 issue 规定",
   "issue.create": "创建",
-  "issue.react": "React",
-  "issue.reactHelp": "react / react-native 版本",
+  "issue.mysql": "MySQL 版本",
+  "issue.mysqlHelp": "MySQL 发行版本",
   "issue.browser": "浏览器",
   "issue.browserHelp": "浏览器版本",
   "issue.system": "系统",
@@ -22,7 +22,7 @@
   "issue.repoHelp": "请确保将 issue 发往相关的仓库。",
   "issue.reproduction": "重现链接",
   "issue.steps": "重现步骤",
-  "issue.version": "版本",
+  "issue.version": "TiDB 版本",
   "issue.versionHelp": "请检查问题是否存在于最新版本中。",
   "previewModal.title": "Issue 预览",
   "repro.about": "关于重现"
