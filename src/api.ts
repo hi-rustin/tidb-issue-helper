@@ -17,6 +17,10 @@ function checkStatus(response: Response) {
 }
 
 export function fetchTiDBVersions(repo: string) {
+  // Hacking to test-dev.
+  if (repo === "test-dev") {
+    repo = "tidb";
+  }
   return fetch(`${endpoint}/repos/pingcap/${repo}/releases?per_page=100`)
     .then(checkStatus)
     .then((response: Response) => response.json())
