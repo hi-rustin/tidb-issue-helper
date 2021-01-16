@@ -29,6 +29,10 @@ export function fetchTiDBVersions(repo: string) {
 }
 
 export function fetchIssues(repo: string, keyword: string) {
+  // Hacking to test-dev.
+  if (repo === "test-dev") {
+    repo = "tidb";
+  }
   const q = encodeURIComponent(`is:issue repo:pingcap/${repo} ${keyword}`);
   return fetch(`${endpoint}/search/issues?q=${q}&per_page=5`)
     .then(checkStatus)
